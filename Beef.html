@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Content as Array.</h2>
+<p>Content written as an JSON array will be converted into a JavaScript array.</p>
+<div>
+    <input type="Button" name="this" id="bttn" value="MyButton" onclick="MyFun(this)" >
+    <input type="text" value="Grteat change Ne If You Can" id="w">
+           
+</div>
+
+<p id="demo"></p>
+
+<script>
+    
+    function MyFun (j) {
+        document.getElementById("w").value ="Great!";
+        
+    
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myArr[0] + myArr[1];
+        document.getElementById("w").value =  myArr[3];
+        document.getElementById("bttn").value = myArr[4];
+        
+    }
+};
+xmlhttp.open("GET", "api.php", true);
+xmlhttp.send();
+}
+</script>
+
+<p>Take a look at <a href="api.php" target="_blank">json_demo_array.txt</a></p>
+
+</body>
+</html>
